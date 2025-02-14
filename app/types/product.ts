@@ -20,4 +20,14 @@ export interface Product {
   stock: number;
   rating: number;
   reviews: number;
-} 
+}
+
+export interface CartProduct {
+  id: string;
+  name: string;
+  price: number;
+  mainImage?: string;
+  quantity?: number;
+  selectedSize?: string;
+  selectedColor?: string;
+}

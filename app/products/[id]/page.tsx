@@ -11,9 +11,9 @@ export default function ProductPage({ params }: { params: { id: string } }) {
   const { addToCart } = useCart();
   const resolvedParams = use(params);
   const product = getProductById(resolvedParams.id);
-  const [selectedColor, setSelectedColor] = useState(product?.colors[0]);
-  const [selectedSize, setSelectedSize] = useState(product?.sizes[0]);
-  const [mainImage, setMainImage] = useState(product?.mainImage);
+  const [selectedColor, setSelectedColor] = useState(product?.colors?.[0] || '#000000');
+  const [selectedSize, setSelectedSize] = useState(product?.sizes?.[0] || 'M');
+  const [mainImage, setMainImage] = useState(product?.mainImage || '');
   
   if (!product) {
     return <div>Product not found</div>;

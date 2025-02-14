@@ -8,6 +8,13 @@ interface Product {
   price: number;
   image: string;
   quantity?: number;
+  mainImage?: string;
+}
+
+interface CartProduct extends Product {
+  quantity?: number;
+  selectedSize?: string;
+  selectedColor?: string;
 }
 
 interface CartContextType {
@@ -37,7 +44,11 @@ export function CartProvider({ children }: { children: ReactNode }) {
             : item
         );
       }
-      return [...prevItems, { ...product, quantity: 1 }];
+      return [...prevItems, { 
+        ...product, 
+        quantity: 1,
+        mainImage: product.mainImage
+      }];
     });
     setIsCartOpen(true);
   };

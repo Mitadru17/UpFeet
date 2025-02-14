@@ -1,7 +1,6 @@
 'use client';
 
 import { useCart } from '../context/CartContext';
-import Image from 'next/image';
 
 export default function Cart() {
   const { 
@@ -30,15 +29,12 @@ export default function Cart() {
           <div className="cart-items">
             {cartItems.map((item) => (
               <div key={item.id} className="cart-item">
-                <div className="cart-item-image">
-                  <Image
-                    src={item.mainImage}
-                    alt={item.name}
-                    width={80}
-                    height={80}
-                    className="cart-product-image"
-                    style={{ objectFit: 'contain' }}
-                  />
+                <div className="cart-item-initials">
+                  {item.name
+                    .split(' ')
+                    .map(word => word[0])
+                    .join('')
+                    .toUpperCase()}
                 </div>
                 <div className="cart-item-details">
                   <h3>{item.name}</h3>
