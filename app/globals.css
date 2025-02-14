@@ -3454,3 +3454,18 @@ nav {
   font-weight: 600;
   margin-right: 1rem;
 }
+
+.loading {
+  padding: 2rem;
+  text-align: center;
+  color: var(--text-color);
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading p {
+  font-size: 1.1rem;
+  opacity: 0.8;
+}

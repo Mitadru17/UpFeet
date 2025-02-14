@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { Product } from '../types/product';
@@ -8,7 +8,7 @@ import { getProductsByCategory, products, getProductsByType } from '../data/prod
 import { useCart } from '../context/CartContext';
 import Cart from '../components/Cart';
 
-export default function ProductsPage() {
+function ProductList() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const { addToCart } = useCart();
@@ -24,19 +24,10 @@ export default function ProductsPage() {
     } else {
       setDisplayedProducts(products);
     }
-  }, [category, type, products]);
+  }, [category, type]);
 
   return (
-    <main className="page-container">
-      <section className="page-header">
-        <h1>
-          {type ? `${type.charAt(0).toUpperCase() + type.slice(1)}` :
-           category ? `${category.charAt(0).toUpperCase() + category.slice(1)}'s Collection` : 
-           'All Products'}
-        </h1>
-        <p>Discover our collection of innovative footwear</p>
-      </section>
-
+    <div>
       <div className="products-controls">
         <div className="search-bar">
           <input
@@ -208,7 +199,7 @@ export default function ProductsPage() {
                   className="quick-add"
                   onClick={(e) => {
                     e.stopPropagation();
-                    addToCart(product);
+                    addToCart({ ...product, image: product.mainImage });
                   }}
                 >
                   Quick Add +
@@ -223,7 +214,7 @@ export default function ProductsPage() {
                     className="add-to-cart"
                     onClick={(e) => {
                       e.stopPropagation();
-                      addToCart(product);
+                      addToCart({ ...product, image: product.mainImage });
                     }}
                   >
                     Add to Cart
@@ -239,6 +230,26 @@ export default function ProductsPage() {
           </div>
         )}
       </section>
+    </div>
+  );
+}
+
+export default function ProductsPage() {
+  return (
+    <main className="page-container">
+      <section className="page-header">
+        <h1>All Products</h1>
+        <p>Discover our collection of innovative footwear</p>
+      </section>
+
+      <Suspense fallback={
+        <div className="loading">
+          <p>Loading products...</p>
+        </div>
+      }>
+        <ProductList />
+      </Suspense>
+
       <Cart />
     </main>
   );
