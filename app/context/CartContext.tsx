@@ -6,15 +6,9 @@ interface Product {
   id: string;
   name: string;
   price: number;
-  image: string;
-  quantity?: number;
+  image?: string;
   mainImage?: string;
-}
-
-interface CartProduct extends Product {
   quantity?: number;
-  selectedSize?: string;
-  selectedColor?: string;
 }
 
 interface CartContextType {

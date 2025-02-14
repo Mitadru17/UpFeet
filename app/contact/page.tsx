@@ -15,15 +15,14 @@ export default function Contact() {
     setStatus('loading');
 
     try {
-      // Here you would normally send the data to your API
-      await new Promise(resolve => setTimeout(resolve, 1500)); // Simulated API call
+      await new Promise(resolve => setTimeout(resolve, 1500));
       setStatus('success');
       setFormData({ name: '', email: '', message: '' });
       
       setTimeout(() => {
         setStatus('idle');
       }, 3000);
-    } catch (error) {
+    } catch {
       setStatus('error');
       setTimeout(() => {
         setStatus('idle');

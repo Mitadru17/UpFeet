@@ -111,8 +111,8 @@ export default function Home() {
         });
       };
       
-      const handleError = (e: any) => {
-        console.error('Hero video error:', e.target.error);
+      const handleError = (e: Event) => {
+        console.error('Video error:', e);
         setIsVideoLoaded(false);
       };
       
@@ -149,8 +149,8 @@ export default function Home() {
         });
       };
       
-      const handleError = (e: any) => {
-        console.error('Contact video error:', e.target.error);
+      const handleError = (e: Event) => {
+        console.error('Contact video error:', e);
         setIsContactVideoLoaded(false); // Show placeholder on error
       };
       

@@ -3,11 +3,15 @@ import { Inter, Archivo } from 'next/font/google'
 import { CartProvider } from './context/CartContext'
 import Header from './components/Header'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ 
+  subsets: ['latin'],
+  display: 'swap'
+})
+
 const archivo = Archivo({ 
   subsets: ['latin'],
-  // Add all weights we'll use
-  weight: ['400', '500', '600', '700']
+  weight: ['400', '500', '600', '700'],
+  display: 'swap'
 })
 
 export const metadata = {
