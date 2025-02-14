@@ -265,21 +265,17 @@ export default function Home() {
         </div>
         <div className="hero-content">
           <h1 className="hero-title">
-            UpFeet<br/>
-            Shoes<span className="text-gray-500">.</span>
+            Sneaky<br />Shoes.
           </h1>
           <p className="hero-text">
-            Introductin our special techwear<br/>
-            colection inspired by aethertic of<br/>
-            japanse cyber punk culutre and<br/>
-            military uraabn fashion and best____
+            Introducing our exclusive techwear sneakers, inspired by modern street
+            fashion and urban aesthetics.
           </p>
           <button 
             className="explore-btn"
-            onClick={handleExplore}
+            onClick={() => router.push('/products')}
           >
-            <span className="icon-x">✕</span>
-            Explore
+            Explore Collection <span className="icon-x">→</span>
           </button>
         </div>
       </section>
@@ -294,9 +290,9 @@ export default function Home() {
           <h2>Our Bestsellers</h2>
           <button 
             className="more-btn"
-            onClick={() => router.push('/products?type=shoes')}
+            onClick={() => router.push('/products')}
           >
-            More Products →
+            View All
           </button>
         </div>
         <div className="product-grid blend-stagger">
